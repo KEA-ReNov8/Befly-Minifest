@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: community-service
+  namespace: argocd
+spec:
+  project: microservice-project
+  source:
+    repoURL: https://github.com/myorg/infrastructure-gitops
+    targetRevision: main
+    path: apps/community-service/overlays/prod     # 이 디렉토리 추적
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: community-service
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

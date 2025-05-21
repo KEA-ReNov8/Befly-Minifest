@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: user-service
+  namespace: argocd
+spec:
+  project: microservice-project
+  source:
+    repoURL: https://github.com/myorg/infrastructure-gitops
+    targetRevision: main
+    path: apps/user-service/overlays/prod     # 이 디렉토리 추적
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: user-service
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
