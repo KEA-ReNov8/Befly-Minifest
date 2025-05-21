@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userservice
+  name: user-service
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: userservice
+      app: user-service
   template:
     metadata:
       labels:
-        app: userservice
+        app: user-service
     spec:
       containers:
-        - name: userservice
-          image: myregistry/userservice:latest
+        - name: user-service
+          image: myregistry/user-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
           env:
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: userservice-secret
+                  name: user-service-secret
                   key: username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: userservice-secret
+                  name: user-service-secret
                   key: password
