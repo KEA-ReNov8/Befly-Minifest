@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: gateway-service 
+  name: consult-service
   namespace: backend
-spec: 
+spec:
   replicas: 2
   selector:
     matchLabels:
-      app: gateway-service
+      app: consult-service
   template:
     metadata:
       labels:
-        app: gateway-service
+        app: consult-service
     spec:
       containers:
-        - name: gateway-service
-          image: kohyunchoel/befly-gateway:e495681
+        - name: consult-service
+          image: kohyunchoel/befly-ai:b0f9b88
           resources:
             requests:
               memory: "512Mi"
@@ -25,5 +25,8 @@ spec:
               cpu: "800m"
           ports:
             - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: consult-service-secret
       imagePullSecrets:
-        - name:  my-registry-secret
+        - name: my-registry-secret

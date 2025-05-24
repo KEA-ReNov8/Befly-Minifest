@@ -3,3 +3,6 @@ befly-cluster.yaml
 kic-iam-auth
 
 .DS_Store
+
+apps/consult-service/secret.yaml
+agent/**
