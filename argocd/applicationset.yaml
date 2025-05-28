@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: befly-microservices
+  namespace: backend
+spec:
+  generators:
+    - list:
+        elements:
+          - name: community-service
+            repoURL: https://github.com/KEA-ReNov8/Befly-Minifest.git
+            revision: main
+            path: apps/community-service
+          - name: consult-service
+            repoURL: https://github.com/KEA-ReNov8/Befly-Minifest.git
+            revision: main
+            path: apps/consult-service
+          - name: gateway-service
+            repoURL: https://github.com/KEA-ReNov8/Befly-Minifest.git
+            revision: main
+            path: apps/gateway-service
+          - name: user-service
+            repoURL: https://github.com/KEA-ReNov8/Befly-Minifest.git
+            revision: main
+            path: apps/user-service
+  template:
+    metadata:
+      name: '{{ name }}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{ repoURL }}'
+        targetRevision: '{{ revision }}'
+        path: '{{ path }}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: backend
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
