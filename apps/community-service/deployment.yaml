@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: community-service
-          image: kohyunchoel/befly-community:88c134b
+          image: kohyunchoel/befly-community:3ac36c1
           resources:
             requests:
               memory: "512Mi"
