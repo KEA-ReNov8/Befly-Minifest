@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: consult-service
-          image: kohyunchoel/befly-ai:23f66ee
+          image: kohyunchoel/befly-ai:ad24ec8
           resources:
             requests:
               memory: "512Mi"
