@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: gateway-service
-          image: kohyunchoel/befly-gateway:1c3a789
+          image: kohyunchoel/befly-gateway:f545ebe
           resources:
             requests:
               memory: "512Mi"
