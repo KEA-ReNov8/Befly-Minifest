@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: kohyunchoel/befly-user:f4e8160
+          image: kohyunchoel/befly-user:c3f21bd
           resources:
             requests:
               memory: "512Mi"
